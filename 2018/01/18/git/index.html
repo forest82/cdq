@@ -16,10 +16,13 @@
   <title>git | 希逋林子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="git" />
+  
   
   
   
   <meta name="description" content="git–分布式版本控制系统  #特点  无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库 团队成员间能协同合作 非网络环境下能commit代码 是个“月光宝盒”–版本回退  #流程名词解释： 1.工作区：本地的项目目录 工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化 2.版本库  缓存区(Stage或Index">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git">
 <meta property="og:url" content="http://www.chendongqin.com/2018/01/18/git/index.html">
@@ -27,7 +30,8 @@
 <meta property="og:description" content="git–分布式版本控制系统  #特点  无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库 团队成员间能协同合作 非网络环境下能commit代码 是个“月光宝盒”–版本回退  #流程名词解释： 1.工作区：本地的项目目录 工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化 2.版本库  缓存区(Stage或Index">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.chendongqin.com/css/images/git.png">
-<meta property="og:updated_time" content="2018-01-18T10:05:31.635Z">
+<meta property="og:image" content="http://www.chendongqin.com/css/images/git01.png">
+<meta property="og:updated_time" content="2018-01-18T14:26:43.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="git–分布式版本控制系统  #特点  无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库 团队成员间能协同合作 非网络环境下能commit代码 是个“月光宝盒”–版本回退  #流程名词解释： 1.工作区：本地的项目目录 工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化 2.版本库  缓存区(Stage或Index">
@@ -213,12 +217,83 @@ var themeMenus = {};
 <li>自动创建第一个分支master</li>
 </ul>
 <p><img src="http://www.chendongqin.com/css/images/git.png" alt=""></p>
+<p>#编程场景</p>
+<p>##普通（拉代码-写代码-推代码）<br><img src="http://www.chendongqin.com/css/images/git01.png" alt=""></p>
+<p>##“月光宝盒”–版本回退</p>
+<p>###1.git log</p>
+<pre><code>git log xxx  （查看commit的提交的记录，确定需要回到那个版本）
+
+git reflog （打印你记录你的每一次操作记录）
+</code></pre><p>###2.本地回退(未push之前)<br>add或commit之后，发现有问题，需要撤回</p>
+<pre><code>git reset [--soft | --mixed | --hard 版本号
+</code></pre><ul>
+<li>–mixed:会保留源码,只是将git commit和index 信息回退到了某个版本.</li>
+<li>–soft:保留源码,只回退到commit 信息到某个版本.不涉及index的回退,如果还需要提交,直接commit即可.</li>
+<li>–hard:源码也会回退到某个版本,commit和index 都回回退到某个版本.(注意,这种方式是改变本地代码仓库源码)</li>
+</ul>
+<p>原理：reset是在历史记录中找到指定版本，删除，HEAD指针向后移动(正常的方向是指向最新，向前的)</p>
+<p>###3.线上回退(push之后)<br>需要线上线下同时回退</p>
+<pre><code>git revert 版本号
+</code></pre><p>原理：revert是重新提交一次commit，起到覆盖的作用，达到回退到指定版本的目的，HEAD一直向前</p>
+<p>##开拓新分支</p>
+<p>#git常用命令</p>
+<p>——————————commit——————————</p>
+<ul>
+<li>git status                                    ：检查文件当前的状态</li>
+<li>git add [文件名]                               ： 追踪新的文件(把文件从工作区传到缓存区)</li>
+<li>git diff –cached                             ： 若要看已经暂存起来的文件和上次提交时的快照之间的差异</li>
+<li>git commit -m “Story 182: Fix benchmark”      ： 用一行命令提交更新(名字描述要取好，方便以后查看)</li>
+<li>git commit -a -m ‘added new benchmarks’       ： 跳过add命令直接提交</li>
+<li>git rm –cached log.log                       ： 从git仓库中删除不小心追踪的文件（用于gitignore之前追踪的文件）                   </li>
+<li>git mv file_from file_to                      ： 移动文件/重命名文件</li>
+</ul>
+<p>——————————branch——————————</p>
+<ul>
+<li>git branch                                    ： 查看分支</li>
+<li>git branch -v                                 ： 查看各分支最后一个提交对象</li>
+<li>git branch –merged                           ： 查看已经merge过的分支</li>
+<li>git branch –no-merged                        ： 尚未merge的分支</li>
+<li><p>git branch -d testing                         ： 删除掉分支(如果还没有merge,会出现错误,-D可以强制删除)</p>
+</li>
+<li><p>git branch -a                                 ： 查看所有分支（包括远程服务器）</p>
+</li>
+<li>git push [远程仓库名] [本地分支名]:[远程分支名]  ： 推送本地分支到远程分支(如果本地分支名为空，则会直接删除远程分支名)</li>
+<li>$ git checkout -b iss53                         ： 新建分支并切换到新分支 =$ git branch iss53; git checkout iss53</li>
+<li>git cherry-pick [id]                          ： 合并某一个单独的commit</li>
+</ul>
+<p>——————————log———————————</p>
+<ul>
+<li>git log –pretty=format:”%h - %an, %ar : %s”  ： 用特性的format查看log</li>
+<li>git log –graph                               ： 用图表的形式显示git的合并历史</li>
+</ul>
+<p>——————————config（需要配置建立本地与远程代码之间的连接）————————–</p>
+<ul>
+<li>git config –global user.name “John Doe”      ： 配置用户名 ！仅第一次必须</li>
+<li>git config –global user.email je@example.com ： 配置电邮 ！仅第一次必须</li>
+<li>git config –list                             ： 查看配置信息</li>
+<li>git config –global alias.stash-unapply ‘!git stash show -p | git apply -R’           ： 设置别名                                  </li>
+</ul>
+<p>——————————stash——————————</p>
+<ul>
+<li>git stash                                     ： 储藏当前工作内容</li>
+<li>git stash list                                ： 查看所有已经储藏的内容</li>
+<li>git stash apply  [stash@{0}]                  ： 在当前工作区应用储藏的内容，默认最新</li>
+<li>git stash apply –index                       ： 在当前工作区应用储藏的内容，并保持之前暂存区的状态</li>
+<li>git stash drop                                ： 删除一个储藏</li>
+<li>git stash pop                                 ： 弹出一个储藏</li>
+</ul>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/git/">git</a>
+
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
       
         <div id="donation_div"></div>
 
