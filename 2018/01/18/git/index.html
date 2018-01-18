@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://www.chendongqin.com/css/images/git03.jpg">
 <meta property="og:image" content="http://www.chendongqin.com/css/images/git.png">
 <meta property="og:image" content="http://www.chendongqin.com/css/images/git01.png">
-<meta property="og:updated_time" content="2018-01-18T14:51:35.905Z">
+<meta property="og:updated_time" content="2018-01-18T14:57:42.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="git–分布式版本控制系统   特点 无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库 团队成员间能协同合作 非网络环境下能commit代码 是个“月光宝盒”–版本回退   流程名词解释： 1.工作区：本地的项目目录 工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化 2.版本库  缓存区(Stage或Index)">
@@ -235,7 +235,7 @@ git reflog （打印你记录你的每一次操作记录）
 <h3 id="3-线上回退-push之后"><a href="#3-线上回退-push之后" class="headerlink" title="3.线上回退(push之后)"></a>3.线上回退(push之后)</h3><p>需要线上线下同时回退</p>
 <pre><code>git revert 版本号
 </code></pre><p>原理：revert是重新提交一次commit，起到覆盖的作用，达到回退到指定版本的目的，HEAD一直向前</p>
-<h2 id="开拓新分支"><a href="#开拓新分支" class="headerlink" title="开拓新分支"></a>开拓新分支</h2><h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h1><p>——————————commit——————————</p>
+<h2 id="开拓新分支"><a href="#开拓新分支" class="headerlink" title="开拓新分支"></a>开拓新分支</h2><h3 id="1-git-status-（查看当前分支的状态）"><a href="#1-git-status-（查看当前分支的状态）" class="headerlink" title="1.git status   （查看当前分支的状态）"></a>1.git status   （查看当前分支的状态）</h3><h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h1><p>——————————commit——————————</p>
 <ul>
 <li>git status                                    ：检查文件当前的状态</li>
 <li>git add [文件名]                               ： 追踪新的文件(把文件从工作区传到缓存区)</li>
@@ -355,7 +355,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程场景"><span class="nav-number">3.</span> <span class="nav-text">编程场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通（拉代码-写代码-推代码）"><span class="nav-number">3.1.</span> <span class="nav-text">普通（拉代码-写代码-推代码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“月光宝盒”–版本回退"><span class="nav-number">3.2.</span> <span class="nav-text">“月光宝盒”–版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-log"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.git log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本地回退-未push之前"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.本地回退(未push之前)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线上回退-push之后"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.线上回退(push之后)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开拓新分支"><span class="nav-number">3.3.</span> <span class="nav-text">开拓新分支</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git常用命令"><span class="nav-number">4.</span> <span class="nav-text">git常用命令</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程场景"><span class="nav-number">3.</span> <span class="nav-text">编程场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通（拉代码-写代码-推代码）"><span class="nav-number">3.1.</span> <span class="nav-text">普通（拉代码-写代码-推代码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“月光宝盒”–版本回退"><span class="nav-number">3.2.</span> <span class="nav-text">“月光宝盒”–版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-log"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.git log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本地回退-未push之前"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.本地回退(未push之前)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线上回退-push之后"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.线上回退(push之后)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开拓新分支"><span class="nav-number">3.3.</span> <span class="nav-text">开拓新分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-status-（查看当前分支的状态）"><span class="nav-number">3.3.1.</span> <span class="nav-text">1.git status   （查看当前分支的状态）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git常用命令"><span class="nav-number">4.</span> <span class="nav-text">git常用命令</span></a></li></ol>
     
     </div>
   </aside>
