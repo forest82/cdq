@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://www.chendongqin.com/css/images/git03.jpg">
 <meta property="og:image" content="http://www.chendongqin.com/css/images/git.png">
 <meta property="og:image" content="http://www.chendongqin.com/css/images/git01.png">
-<meta property="og:updated_time" content="2018-01-18T14:57:42.727Z">
+<meta property="og:updated_time" content="2018-01-18T15:25:46.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="git–分布式版本控制系统   特点 无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库 团队成员间能协同合作 非网络环境下能commit代码 是个“月光宝盒”–版本回退   流程名词解释： 1.工作区：本地的项目目录 工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化 2.版本库  缓存区(Stage或Index)">
@@ -220,7 +220,7 @@ var themeMenus = {};
 <li>自动创建第一个分支master</li>
 </ul>
 <p><img src="http://www.chendongqin.com/css/images/git.png" alt=""></p>
-<h1 id="编程场景"><a href="#编程场景" class="headerlink" title="编程场景"></a>编程场景</h1><h2 id="普通（拉代码-写代码-推代码）"><a href="#普通（拉代码-写代码-推代码）" class="headerlink" title="普通（拉代码-写代码-推代码）"></a>普通（拉代码-写代码-推代码）</h2><p><img src="http://www.chendongqin.com/css/images/git01.png" alt=""></p>
+<h1 id="编程场景"><a href="#编程场景" class="headerlink" title="编程场景"></a>编程场景</h1><h2 id="普通（拉代码-写代码-推代码）"><a href="#普通（拉代码-写代码-推代码）" class="headerlink" title="普通（拉代码-写代码-推代码）"></a>普通（拉代码-写代码-推代码）</h2><p><img src="http://www.chendongqin.com/css/images/git01.png" alt=""><br>注意：pull代码在push前都可以，最好在写代码之前pull一把。<br>本人合并代码借助<a href="https://www.scootersoftware.com/" target="_blank" rel="noopener">Beyond Compare</a></p>
 <h2 id="“月光宝盒”–版本回退"><a href="#“月光宝盒”–版本回退" class="headerlink" title="“月光宝盒”–版本回退"></a>“月光宝盒”–版本回退</h2><h3 id="1-git-log"><a href="#1-git-log" class="headerlink" title="1.git log"></a>1.git log</h3><pre><code>git log xxx  （查看commit的提交的记录，确定需要回到那个版本）
 
 git reflog （打印你记录你的每一次操作记录）
@@ -235,8 +235,8 @@ git reflog （打印你记录你的每一次操作记录）
 <h3 id="3-线上回退-push之后"><a href="#3-线上回退-push之后" class="headerlink" title="3.线上回退(push之后)"></a>3.线上回退(push之后)</h3><p>需要线上线下同时回退</p>
 <pre><code>git revert 版本号
 </code></pre><p>原理：revert是重新提交一次commit，起到覆盖的作用，达到回退到指定版本的目的，HEAD一直向前</p>
-<h2 id="开拓新分支"><a href="#开拓新分支" class="headerlink" title="开拓新分支"></a>开拓新分支</h2><h3 id="1-git-status-（查看当前分支的状态）"><a href="#1-git-status-（查看当前分支的状态）" class="headerlink" title="1.git status   （查看当前分支的状态）"></a>1.git status   （查看当前分支的状态）</h3><h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h1><p>——————————commit——————————</p>
-<ul>
+<h2 id="开拓新分支"><a href="#开拓新分支" class="headerlink" title="开拓新分支"></a>开拓新分支</h2><p>创建新分支，不影响主分支的代码，合并完成后，删除该分支，过程比直接在master主分支操作更安全。</p>
+<h3 id="1-git-status-（查看当前分支的状态）"><a href="#1-git-status-（查看当前分支的状态）" class="headerlink" title="1.git status   （查看当前分支的状态）"></a>1.git status   （查看当前分支的状态）</h3><h3 id="2-git-checkout-b-分支名-（创建并切换分支）"><a href="#2-git-checkout-b-分支名-（创建并切换分支）" class="headerlink" title="2.git checkout -b 分支名  （创建并切换分支）"></a>2.git checkout -b 分支名  （创建并切换分支）</h3><h3 id="3-git-merge-分支名-（合并分支到master上）"><a href="#3-git-merge-分支名-（合并分支到master上）" class="headerlink" title="3.git merge 分支名 （合并分支到master上）"></a>3.git merge 分支名 （合并分支到master上）</h3><h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h1><h2 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h2><ul>
 <li>git status                                    ：检查文件当前的状态</li>
 <li>git add [文件名]                               ： 追踪新的文件(把文件从工作区传到缓存区)</li>
 <li>git diff –cached                             ： 若要看已经暂存起来的文件和上次提交时的快照之间的差异</li>
@@ -245,8 +245,7 @@ git reflog （打印你记录你的每一次操作记录）
 <li>git rm –cached log.log                       ： 从git仓库中删除不小心追踪的文件（用于gitignore之前追踪的文件）                   </li>
 <li>git mv file_from file_to                      ： 移动文件/重命名文件</li>
 </ul>
-<p>——————————branch——————————</p>
-<ul>
+<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><ul>
 <li>git branch                                    ： 查看分支</li>
 <li>git branch -v                                 ： 查看各分支最后一个提交对象</li>
 <li>git branch –merged                           ： 查看已经merge过的分支</li>
@@ -259,20 +258,18 @@ git reflog （打印你记录你的每一次操作记录）
 <li>$ git checkout -b iss53                         ： 新建分支并切换到新分支 =$ git branch iss53; git checkout iss53</li>
 <li>git cherry-pick [id]                          ： 合并某一个单独的commit</li>
 </ul>
-<p>——————————log———————————</p>
-<ul>
+<h2 id="log"><a href="#log" class="headerlink" title="log"></a>log</h2><ul>
 <li>git log –pretty=format:”%h - %an, %ar : %s”  ： 用特性的format查看log</li>
 <li>git log –graph                               ： 用图表的形式显示git的合并历史</li>
 </ul>
-<p>——————————config（需要配置建立本地与远程代码之间的连接）————————–</p>
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p>（需要配置建立本地与远程代码之间的连接）</p>
 <ul>
 <li>git config –global user.name “John Doe”      ： 配置用户名 ！仅第一次必须</li>
 <li>git config –global user.email je@example.com ： 配置电邮 ！仅第一次必须</li>
 <li>git config –list                             ： 查看配置信息</li>
 <li>git config –global alias.stash-unapply ‘!git stash show -p | git apply -R’           ： 设置别名                                  </li>
 </ul>
-<p>——————————stash——————————</p>
-<ul>
+<h2 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h2><ul>
 <li>git stash                                     ： 储藏当前工作内容</li>
 <li>git stash list                                ： 查看所有已经储藏的内容</li>
 <li>git stash apply  [stash@{0}]                  ： 在当前工作区应用储藏的内容，默认最新</li>
@@ -280,6 +277,7 @@ git reflog （打印你记录你的每一次操作记录）
 <li>git stash drop                                ： 删除一个储藏</li>
 <li>git stash pop                                 ： 弹出一个储藏</li>
 </ul>
+<p>文末，有一份git的资料，有需要深入了解的，请自行查看~<br><a href="http://www.chendongqin.com/leaves/Git-Pro中文版.chm">http://www.chendongqin.com/leaves/Git-Pro中文版.chm</a></p>
 
       
     </div>
@@ -355,7 +353,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程场景"><span class="nav-number">3.</span> <span class="nav-text">编程场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通（拉代码-写代码-推代码）"><span class="nav-number">3.1.</span> <span class="nav-text">普通（拉代码-写代码-推代码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“月光宝盒”–版本回退"><span class="nav-number">3.2.</span> <span class="nav-text">“月光宝盒”–版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-log"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.git log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本地回退-未push之前"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.本地回退(未push之前)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线上回退-push之后"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.线上回退(push之后)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开拓新分支"><span class="nav-number">3.3.</span> <span class="nav-text">开拓新分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-status-（查看当前分支的状态）"><span class="nav-number">3.3.1.</span> <span class="nav-text">1.git status   （查看当前分支的状态）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git常用命令"><span class="nav-number">4.</span> <span class="nav-text">git常用命令</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程场景"><span class="nav-number">3.</span> <span class="nav-text">编程场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通（拉代码-写代码-推代码）"><span class="nav-number">3.1.</span> <span class="nav-text">普通（拉代码-写代码-推代码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“月光宝盒”–版本回退"><span class="nav-number">3.2.</span> <span class="nav-text">“月光宝盒”–版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-log"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.git log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本地回退-未push之前"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.本地回退(未push之前)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线上回退-push之后"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.线上回退(push之后)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开拓新分支"><span class="nav-number">3.3.</span> <span class="nav-text">开拓新分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-status-（查看当前分支的状态）"><span class="nav-number">3.3.1.</span> <span class="nav-text">1.git status   （查看当前分支的状态）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-git-checkout-b-分支名-（创建并切换分支）"><span class="nav-number">3.3.2.</span> <span class="nav-text">2.git checkout -b 分支名  （创建并切换分支）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-git-merge-分支名-（合并分支到master上）"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.git merge 分支名 （合并分支到master上）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git常用命令"><span class="nav-number">4.</span> <span class="nav-text">git常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#commit"><span class="nav-number">4.1.</span> <span class="nav-text">commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#branch"><span class="nav-number">4.2.</span> <span class="nav-text">branch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log"><span class="nav-number">4.3.</span> <span class="nav-text">log</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config"><span class="nav-number">4.4.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stash"><span class="nav-number">4.5.</span> <span class="nav-text">stash</span></a></li></ol></li></ol>
     
     </div>
   </aside>
