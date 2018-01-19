@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[git]]></title>
+    <url>%2F2018%2F01%2F18%2Fgit%2F</url>
+    <content type="text"><![CDATA[git–分布式版本控制系统 特点 无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库 团队成员间能协同合作 非网络环境下能commit代码 是个“月光宝盒”–版本回退 流程名词解释： 1.工作区：本地的项目目录 工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化 2.版本库 缓存区(Stage或Index):暂时保存代码改动的地方 HEAD指针：指向最后一次提交的结果 自动创建第一个分支master 编程场景普通（拉代码-写代码-推代码）注意：pull代码在push前都可以，最好在写代码之前pull一把。本人合并代码借助Beyond Compare “月光宝盒”–版本回退git loggit log xxx （查看commit的提交的记录，确定需要回到那个版本） git reflog （打印你记录你的每一次操作记录） 本地回退(未push之前)add或commit之后，发现有问题，需要撤回 git reset [--soft | --mixed | --hard 版本号 –mixed:会保留源码,只是将git commit和index 信息回退到了某个版本. –soft:保留源码,只回退到commit 信息到某个版本.不涉及index的回退,如果还需要提交,直接commit即可. –hard:源码也会回退到某个版本,commit和index 都回回退到某个版本.(注意,这种方式是改变本地代码仓库源码) 原理：reset是在历史记录中找到指定版本，删除，HEAD指针向后移动(正常的方向是指向最新，向前的) 线上回退(push之后)需要线上线下同时回退 git revert 版本号 原理：revert是重新提交一次commit，起到覆盖的作用，达到回退到指定版本的目的，HEAD一直向前 开拓新分支创建新分支，不影响主分支的代码，合并完成后，删除该分支，过程比直接在master主分支操作更安全。 git status （查看当前分支的状态）git checkout -b 分支名 （创建并切换分支）git merge 分支名 （合并分支到master上）git常用命令commit git status ：检查文件当前的状态 git add [文件名] ： 追踪新的文件(把文件从工作区传到缓存区) git diff –cached ： 若要看已经暂存起来的文件和上次提交时的快照之间的差异 git commit -m “Story 182: Fix benchmark” ： 用一行命令提交更新(名字描述要取好，方便以后查看) git commit -a -m ‘added new benchmarks’ ： 跳过add命令直接提交 git rm –cached log.log ： 从git仓库中删除不小心追踪的文件（用于gitignore之前追踪的文件） git mv file_from file_to ： 移动文件/重命名文件 branch git branch ： 查看分支 git branch -v ： 查看各分支最后一个提交对象 git branch –merged ： 查看已经merge过的分支 git branch –no-merged ： 尚未merge的分支 git branch -d testing ： 删除掉分支(如果还没有merge,会出现错误,-D可以强制删除) git branch -a ： 查看所有分支（包括远程服务器） git push [远程仓库名] [本地分支名]:[远程分支名] ： 推送本地分支到远程分支(如果本地分支名为空，则会直接删除远程分支名) $ git checkout -b iss53 ： 新建分支并切换到新分支 =$ git branch iss53; git checkout iss53 git cherry-pick [id] ： 合并某一个单独的commit log git log –pretty=format:”%h - %an, %ar : %s” ： 用特性的format查看log git log –graph ： 用图表的形式显示git的合并历史 config（需要配置建立本地与远程代码之间的连接） git config –global user.name “John Doe” ： 配置用户名 ！仅第一次必须 git config –global user.email je@example.com ： 配置电邮 ！仅第一次必须 git config –list ： 查看配置信息 git config –global alias.stash-unapply ‘!git stash show -p | git apply -R’ ： 设置别名 stash git stash ： 储藏当前工作内容 git stash list ： 查看所有已经储藏的内容 git stash apply [stash@{0}] ： 在当前工作区应用储藏的内容，默认最新 git stash apply –index ： 在当前工作区应用储藏的内容，并保持之前暂存区的状态 git stash drop ： 删除一个储藏 git stash pop ： 弹出一个储藏 第一篇技术博客，有点忐忑，怕各种写不好，误导他人就不好了，有错误的希望大家及时纠正，一起进步~ 文末，有一份git的资料，有需要深入了解的，请自行查看~Git-Pro中文版.chm]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F01%2F15%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>

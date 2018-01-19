@@ -185,88 +185,36 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>git–分布式版本控制系统</p>
-</blockquote>
-<p><img src="http://www.chendongqin.com/css/images/git02.jpg" alt=""></p>
-<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul>
-<li>无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库</li>
-<li>团队成员间能协同合作</li>
-<li>非网络环境下能commit代码</li>
-<li>是个“月光宝盒”–版本回退</li>
-</ul>
-<p><img src="http://www.chendongqin.com/css/images/git03.jpg" alt="公司提交代码流程"></p>
-<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>名词解释：</p>
-<p>1.工作区：本地的项目目录</p>
-<pre><code>工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化
-</code></pre><p>2.版本库</p>
-<ul>
-<li>缓存区(Stage或Index):暂时保存代码改动的地方</li>
-<li>HEAD指针：指向最后一次提交的结果</li>
-<li>自动创建第一个分支master</li>
-</ul>
-<p><img src="http://www.chendongqin.com/css/images/git.png" alt=""></p>
-<h1 id="编程场景"><a href="#编程场景" class="headerlink" title="编程场景"></a>编程场景</h1><h2 id="普通（拉代码-写代码-推代码）"><a href="#普通（拉代码-写代码-推代码）" class="headerlink" title="普通（拉代码-写代码-推代码）"></a>普通（拉代码-写代码-推代码）</h2><p><img src="http://www.chendongqin.com/css/images/git01.png" alt=""><br>注意：pull代码在push前都可以，最好在写代码之前pull一把。<br>本人合并代码借助<a href="https://www.scootersoftware.com/" target="_blank" rel="noopener">Beyond Compare</a></p>
-<h2 id="“月光宝盒”–版本回退"><a href="#“月光宝盒”–版本回退" class="headerlink" title="“月光宝盒”–版本回退"></a>“月光宝盒”–版本回退</h2><h3 id="1-git-log"><a href="#1-git-log" class="headerlink" title="1.git log"></a>1.git log</h3><pre><code>git log xxx  （查看commit的提交的记录，确定需要回到那个版本）
+        
 
-git reflog （打印你记录你的每一次操作记录）
-</code></pre><h3 id="2-本地回退-未push之前"><a href="#2-本地回退-未push之前" class="headerlink" title="2.本地回退(未push之前)"></a>2.本地回退(未push之前)</h3><p>add或commit之后，发现有问题，需要撤回</p>
-<pre><code>git reset [--soft | --mixed | --hard 版本号
-</code></pre><ul>
-<li>–mixed:会保留源码,只是将git commit和index 信息回退到了某个版本.</li>
-<li>–soft:保留源码,只回退到commit 信息到某个版本.不涉及index的回退,如果还需要提交,直接commit即可.</li>
-<li>–hard:源码也会回退到某个版本,commit和index 都回回退到某个版本.(注意,这种方式是改变本地代码仓库源码)</li>
-</ul>
-<p>原理：reset是在历史记录中找到指定版本，删除，HEAD指针向后移动(正常的方向是指向最新，向前的)</p>
-<h3 id="3-线上回退-push之后"><a href="#3-线上回退-push之后" class="headerlink" title="3.线上回退(push之后)"></a>3.线上回退(push之后)</h3><p>需要线上线下同时回退</p>
-<pre><code>git revert 版本号
-</code></pre><p>原理：revert是重新提交一次commit，起到覆盖的作用，达到回退到指定版本的目的，HEAD一直向前</p>
-<h2 id="开拓新分支"><a href="#开拓新分支" class="headerlink" title="开拓新分支"></a>开拓新分支</h2><p>创建新分支，不影响主分支的代码，合并完成后，删除该分支，过程比直接在master主分支操作更安全。</p>
-<h4 id="1-git-status-（查看当前分支的状态）"><a href="#1-git-status-（查看当前分支的状态）" class="headerlink" title="1.git status   （查看当前分支的状态）"></a>1.git status   （查看当前分支的状态）</h4><h4 id="2-git-checkout-b-分支名-（创建并切换分支）"><a href="#2-git-checkout-b-分支名-（创建并切换分支）" class="headerlink" title="2.git checkout -b 分支名  （创建并切换分支）"></a>2.git checkout -b 分支名  （创建并切换分支）</h4><h4 id="3-git-merge-分支名-（合并分支到master上）"><a href="#3-git-merge-分支名-（合并分支到master上）" class="headerlink" title="3.git merge 分支名 （合并分支到master上）"></a>3.git merge 分支名 （合并分支到master上）</h4><h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h1><h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><ul>
-<li>git status                                    ：检查文件当前的状态</li>
-<li>git add [文件名]                               ： 追踪新的文件(把文件从工作区传到缓存区)</li>
-<li>git diff –cached                             ： 若要看已经暂存起来的文件和上次提交时的快照之间的差异</li>
-<li>git commit -m “Story 182: Fix benchmark”      ： 用一行命令提交更新(名字描述要取好，方便以后查看)</li>
-<li>git commit -a -m ‘added new benchmarks’       ： 跳过add命令直接提交</li>
-<li>git rm –cached log.log                       ： 从git仓库中删除不小心追踪的文件（用于gitignore之前追踪的文件）                   </li>
-<li>git mv file_from file_to                      ： 移动文件/重命名文件</li>
-</ul>
-<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><ul>
-<li>git branch                                    ： 查看分支</li>
-<li>git branch -v                                 ： 查看各分支最后一个提交对象</li>
-<li>git branch –merged                           ： 查看已经merge过的分支</li>
-<li>git branch –no-merged                        ： 尚未merge的分支</li>
-<li><p>git branch -d testing                         ： 删除掉分支(如果还没有merge,会出现错误,-D可以强制删除)</p>
-</li>
-<li><p>git branch -a                                 ： 查看所有分支（包括远程服务器）</p>
-</li>
-<li>git push [远程仓库名] [本地分支名]:[远程分支名]  ： 推送本地分支到远程分支(如果本地分支名为空，则会直接删除远程分支名)</li>
-<li>$ git checkout -b iss53                         ： 新建分支并切换到新分支 =$ git branch iss53; git checkout iss53</li>
-<li>git cherry-pick [id]                          ： 合并某一个单独的commit</li>
-</ul>
-<h3 id="log"><a href="#log" class="headerlink" title="log"></a>log</h3><ul>
-<li>git log –pretty=format:”%h - %an, %ar : %s”  ： 用特性的format查看log</li>
-<li>git log –graph                               ： 用图表的形式显示git的合并历史</li>
-</ul>
-<h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><p>（需要配置建立本地与远程代码之间的连接）</p>
-<ul>
-<li>git config –global user.name “John Doe”      ： 配置用户名 ！仅第一次必须</li>
-<li>git config –global user.email je@example.com ： 配置电邮 ！仅第一次必须</li>
-<li>git config –list                             ： 查看配置信息</li>
-<li>git config –global alias.stash-unapply ‘!git stash show -p | git apply -R’           ： 设置别名                                  </li>
-</ul>
-<h3 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h3><ul>
-<li>git stash                                     ： 储藏当前工作内容</li>
-<li>git stash list                                ： 查看所有已经储藏的内容</li>
-<li>git stash apply  [stash@{0}]                  ： 在当前工作区应用储藏的内容，默认最新</li>
-<li>git stash apply –index                       ： 在当前工作区应用储藏的内容，并保持之前暂存区的状态</li>
-<li>git stash drop                                ： 删除一个储藏</li>
-<li>git stash pop                                 ： 弹出一个储藏</li>
-</ul>
-<hr>
-<p>第一篇技术博客，有点忐忑，怕各种写不好，误导他人就不好了，有错误的希望大家及时纠正，一起进步~</p>
-<p>文末，有一份git的资料，有需要深入了解的，请自行查看~<br><a href="http://www.chendongqin.com/leaves/Git-Pro中文版.chm">Git-Pro中文版.chm</a></p>
+          
+            <div class="entry-thumbnail">
+              <a href="/2018/01/18/git/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
+            
+git–分布式版本控制系统
+特点
+无中心点，每个开发者都能通过克隆(git clone)获得完整的git仓库
+团队成员间能协同合作
+非网络环境下能commit代码
+是个“月光宝盒”–版本回退
 
+
+
+流程名词解释：
+1.工作区：本地的项目目录
+工作区内有.git的文件夹，是git的版本库，用与记录git操作，有时是隐藏的，git init可以初始化
+2.版本库
+
+缓存区(Stage或Inde...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/01/18/git/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
